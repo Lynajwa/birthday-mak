@@ -1,0 +1,268 @@
+﻿@model BirthdayWish.Models.BirthdayViewModel
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>For @Model.Name ❤️</title>
+
+    <link rel="stylesheet" href="~/css/birthday.css" />
+</head>
+
+<body>
+
+    <!-- Background Music -->
+
+    <audio id="bgMusic" loop>
+        <source src="~/music/birthday.mp3" type="audio/mpeg" />
+    </audio>
+
+
+    <!-- PAGE 1 : ENVELOPE -->
+
+    <section id="openingPage" class="page opening-page">
+
+        <div class="opening-content">
+
+            <p class="small-title">
+                Sesuatu yang istimewa untuk
+            </p>
+
+            <h1>
+                Puan Afidah ❤️
+            </h1>
+
+            <div class="envelope-wrapper" onclick="openBirthday()">
+
+                <div class="envelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="letter-preview">
+                        Untuk Mak 🌷
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="heart-seal">
+                        ♥
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="tap-text">
+                Tekan sampul untuk buka 💌
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 2 : INTRO -->
+
+    <section id="introPage" class="page hidden">
+
+        <div class="content-card">
+
+            <div class="flower-row">
+                🌷 🌸 🌷
+            </div>
+
+            <p class="small-title">
+                15 September
+            </p>
+
+            <h1>
+                Hari Yang Istimewa 🌷
+            </h1>
+
+            <p class="quote">
+                Untuk insan yang sentiasa memberi kasih sayang
+                kepada semua orang di sekelilingnya.
+            </p>
+
+            <button onclick="showMemories()">
+                Tengok kenangan kita →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 3 : MEMORIES -->
+
+    <section id="memoryPage" class="page hidden">
+
+        <div class="memory-content">
+
+            <p class="small-title">
+                Kenangan
+            </p>
+
+            <h1>
+                Mak & Wawa 📸
+            </h1>
+
+            <div class="photos">
+
+                @for (int i = 0; i < Model.Photos.Count; i++)
+                {
+                    <div class="polaroid photo-@(i + 1)">
+
+                        <img src="@Model.Photos[i]" alt="Memory with Mom" />
+
+                        <p>
+                            Memory @(i + 1) ❤️
+                        </p>
+
+                    </div>
+                }
+
+            </div>
+
+            <button onclick="showLetter()">
+                Ada sesuatu wawa nak cakap 💌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 4 : LETTER -->
+
+    <section id="letterPage" class="page hidden letter-scene">
+
+        <div class="sparkles"></div>
+
+        <div class="letter-stage">
+
+            <p class="letter-intro">
+                I saved this part for last...
+            </p>
+
+            <div class="big-envelope" id="bigEnvelope" onclick="openSpecialLetter()">
+
+                <div class="env-back"></div>
+
+                <div class="special-letter" id="specialLetter">
+
+                    <div class="letter-inner">
+
+                        <p class="letter-date">
+                            15 September
+                        </p>
+
+                        <h2>
+                            Untuk Mak,
+                        </h2>
+
+                        <p id="typedMessage" class="typed-message">
+                        </p>
+
+                        <div id="letterEnding" class="letter-ending hidden-letter-content">
+
+                            <p class="closing">
+    Terima kasih sebab menjadi seorang insan yang cukup sempurna
+    untuk Wawa, abang-abang, kakak-kakak, Iman, Annur, Nadhif,
+    Adam, Fateh dan Ayah.
+
+    <br /><br />
+
+    Terima kasih sebab sentiasa jadi tempat Wawa pulang,
+    tempat Wawa mengadu dan sentiasa ada untuk Wawa
+    sepanjang 23 tahun 9 bulan Wawa hidup. ^_^
+</p>
+
+                            <p class="signature">
+                                Sayang mak dunia akhirat
+                                <br />
+                                <strong>@Model.From ❤️</strong>
+                            </p>
+
+                            <button type="button" onclick="event.stopPropagation(); showFinalPage();">
+    Tekan sini untuk kejutan terakhir ✨
+</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="env-front"></div>
+
+                <div class="env-flap"></div>
+
+                <div class="wax-seal">
+                    ❤
+                </div>
+
+            </div>
+
+            <p id="openHint" class="open-hint">
+                Tekan sini
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 5 : FINAL -->
+
+    <section id="finalPage" class="page hidden">
+
+        <div id="confettiContainer"></div>
+
+        <div class="final-content">
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+            <p class="small-title">
+                Hari ini untuk Mak
+            </p>
+
+            <h1>
+                Selamat Hari Lahir,
+                <span>Mak ❤️</span>
+            </h1>
+
+            <p>
+                Mak selalu sibuk sayangkan semua orang.
+            </p>
+
+            <p class="important-text">
+                Tapi jangan lupa sayang diri Mak juga.
+            </p>
+
+            <p>
+                Wawa akan sentiasa ada untuk Mak.
+            </p>
+
+            <h2>
+                Wawa sayang Mak sangat-sangat ❤️
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <script src="~/js/birthday.js"></script>
+
+</body>
+
+</html>
